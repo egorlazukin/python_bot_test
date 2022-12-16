@@ -4,7 +4,7 @@ from telebot import types
 import function
 
 
-bot = telebot.TeleBot("5812163050:AAGY7kJtDNn25gKLE-RSOqpTA_qDyKO23vs")
+bot = telebot.TeleBot("TOKEN HERE")
 @bot.message_handler(commands=["start"])
 def start_fun(message):
     markup = types.InlineKeyboardMarkup()
