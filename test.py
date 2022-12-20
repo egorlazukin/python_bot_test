@@ -21,10 +21,13 @@ def callback_query(call):
 @bot.message_handler(content_types = 'text')
 def any_msg(message):
     if(message.text.split('-')[0] == "/add"):
-        mess = message.text.split('-')[1]
-        #Пример: /add-все ли работает?|Да. Все работает
-        function.AddNew(mess.split('|')[0], mess.split('|')[1])
-        bot.send_message(message.chat.id, "Успешно добавлено новое словосочетание")
+        try:
+            mess = message.text.split('-')[1]
+            #Пример: /add-все ли работает?|Да. Все работает
+            function.AddNew(mess.split('|')[0], mess.split('|')[1])
+            bot.send_message(message.chat.id, "Успешно добавлено новое словосочетание")
+        except:
+            bot.send_message(message.chat.id, "Не правильно введена комманда\nПример: /add-все ли работает?|Да. Все работает")
     else:
         if(function.check_user(message.from_user.id)):
             otvet = function.select(message.text)
